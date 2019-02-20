@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.Game_field{
+
+  margin-left: 40%;
+  margin-top: 100px;
+
+}
+.Ceil_container {
+  display: flex;
+}
+
+.Ceil {
+  text-align: center;
+  line-height: 50px;
+  height: 50px;
+  width: 50px;
+  font-size: 30px;
+  border: 3px solid rgb(46, 117, 129);
+
+}
+.Ceil:hover {
+  background-color: burlywood;
+  cursor: pointer;
+}
+
+.Game_btn__rest {
+  margin-top: 20px;
+  background-color: darkgoldenrod;
+  border: none;
+  border-radius: 15px;
+  width: 100px;
+  height: 60px;
+  font-size: 20px;
+
+  margin-left: 10%; 
+}
+
+.Game_btn__rest:hover{
+  
+  cursor: pointer;
+}
+.Game_btn__rest:active{ 
+  transform: translateY(1px);
+  filter: saturate(150%);
+  outline: none;
+
+}
+.Game_btn__rest:focus{
+  outline: none;
+}
+
+[data-index="0"]{
+  border-left:none; 
+  border-top: none; 
+}
+
+[data-index="1"]{
+  border-top: none;
+}
+
+
+[data-index="2"]{
+  border-top: none;
+  border-right: none;
+}
+
+[data-index="3"]{
+  border-left: none; 
+}
+
+[data-index="5"]{
+  border-right: none; 
+}
+
+[data-index="6"]{
+  border-bottom: none;
+  border-left: none;
+}
+
+[data-index="7"]{
+  border-bottom: none;
+}
+
+[data-index="8"]{
+  border-bottom: none;
+  border-right: none;
+}
