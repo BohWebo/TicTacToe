@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import Cell from './Cell';
 
 const winnerCombinations = [
-  [0,1,2],
-  [0,3,6],
-  [0,4,8],
-  [1,4,7],
-  [2,4,6],
-  [2,5,8],
-  [3,4,5],
-  [6,7,8]
+  [0, 1, 2],
+  [0, 3, 6],
+  [0, 4, 8],
+  [1, 4, 7],
+  [2, 4, 6],
+  [2, 5, 8],
+  [3, 4, 5],
+  [6, 7, 8]
 ];
 
 class Game extends Component {
@@ -28,10 +28,10 @@ class Game extends Component {
     if (!cell) return;
 
     const index = cell.dataset.index;
-    this._markCeil(index);
+    this._markCell(index);
   }
 
-  _markCeil(index) {
+  _markCell(index) {
     let {winner, currentTurn, cells: [...cells]} = this.state;
     
     if(cells[index] !== null ) return;
@@ -55,24 +55,24 @@ class Game extends Component {
     return value || '';
    }
 
-   _checkWinner(cells){
-     
+  _checkWinner(cells){
+    for (let combination of winnerCombinations ) {
+      const [a, b, c] = [...combination];
 
-     for (let combination of winnerCombinations ) {
-       const [a, b, c] = [...combination];
-
-       if(
-         cells[a] !== null &&
-         cells[a] === cells[b] && cells[b] === cells[c]
-        ) {
-           return cells[a];
-         }
-      }
-      return null;
+      if(
+        cells[a] !== null &&
+        cells[a] === cells[b] && 
+        cells[b] === cells[c]
+      ) {
+          return cells[a];
+    }
+    return null;
+    }
    }
 
   render() {
-    const {winner, currentTurn} = this.state;
+    const {winner, currentTurn, cells: [...cells] } = this.state;
+    
     return (
       <div 
         className="Game-field" 
@@ -91,25 +91,25 @@ class Game extends Component {
           className="Ceil-container"
            
         >
-          <Cell index="0" value={this._getCellText(this.state.cells[0])} />
-          <Cell index="1" value={this._getCellText(this.state.cells[1])} />
-          <Cell index="2" value={this._getCellText(this.state.cells[2])} />
+          <Cell index="0" value={this._getCellText(cells[0])} />
+          <Cell index="1" value={this._getCellText(cells[1])} />
+          <Cell index="2" value={this._getCellText(cells[2])} />
         </div>
 
         <div 
           className="Ceil-container" 
         >
-          <Cell index="3" value={this._getCellText(this.state.cells[3])} />
-          <Cell index="4" value={this._getCellText(this.state.cells[4])} />
-          <Cell index="5" value={this._getCellText(this.state.cells[5])} />
+          <Cell index="3" value={this._getCellText(cells[3])} />
+          <Cell index="4" value={this._getCellText(cells[4])} />
+          <Cell index="5" value={this._getCellText(cells[5])} />
         </div>
 
         <div 
           className="Ceil-container" 
         >
-          <Cell index="6" value={this._getCellText(this.state.cells[6])} />
-          <Cell index="7" value={this._getCellText(this.state.cells[7])} />
-          <Cell index="8" value={this._getCellText(this.state.cells[8])} />
+          <Cell index="6" value={this._getCellText(cells[6])} />
+          <Cell index="7" value={this._getCellText(cells[7])} />
+          <Cell index="8" value={this._getCellText(cells[8])} />
         </div>
         <div className="btn-container"> 
           <button 
