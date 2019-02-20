@@ -1,3 +1,11 @@
+[Preview](https://bohwebo.github.io/TicTacToe/build/)
+[PR](https://github.com/BohWebo/TicTacToe/pull/1/files)
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

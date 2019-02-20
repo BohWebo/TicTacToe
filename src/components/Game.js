@@ -59,7 +59,6 @@ class Game extends Component {
   _checkWinner(cells){
     for (let combination of winnerCombinations ) {
       let [a, b, c] = [...combination];
-      console.log(combination);
 
       if(
         cells[a] !== null &&
