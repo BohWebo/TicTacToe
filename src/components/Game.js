@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Ceil from './Ceil';
+import Cell from './Cell';
 
 const winnerCombinations = [
   [0,1,2],
@@ -16,40 +16,37 @@ class Game extends Component {
   constructor(props){
     super(props);
     this.state = {
-      ceils: Array(9).fill(null),
+      cells: Array(9).fill(null),
       winner: null,
       currentTurn: 1
     }
   }
 
-  _getIndexCeil(event) {
-    const ceil = event.target.closest('[data-index]');
+  _getIndexCell(event) {
+    const cell = event.target.closest('[data-index]');
     
-    if (!ceil) return;
+    if (!cell) return;
 
-    const index = ceil.dataset.index;
+    const index = cell.dataset.index;
     this._markCeil(index);
   }
 
   _markCeil(index) {
-    const [...ceils] = this.state.ceils;
-    let currentTurn = this.state.currentTurn;
-    let winner = this.state.winner;
-
-    if(ceils[index] !== null ) return;
+    let {winner, currentTurn, cells: [...cells]} = this.state;
+    
+    if(cells[index] !== null ) return;
     if(winner !== null) return;
    
     
     const marker = currentTurn % 2 === 1 ? 'X' : 'O' 
-    ceils[index] = marker;
+    cells[index] = marker;
     currentTurn += 1; 
-
-    winner = this._checkWinner(ceils); 
+    winner = this._checkWinner(cells); 
 
     this.setState({
-      ceils: ceils,
-      currentTurn: currentTurn,
-      winner: winner,
+      cells,
+      currentTurn,
+      winner,
      }
     );
   }
@@ -58,31 +55,29 @@ class Game extends Component {
     return value || '';
    }
 
-   _checkWinner(ceils){
+   _checkWinner(cells){
      
 
      for (let combination of winnerCombinations ) {
        const [a, b, c] = [...combination];
 
        if(
-         ceils[a] !== null &&
-         ceils[a] === ceils[b] &&
-         ceils[b] === ceils[c]
+         cells[a] !== null &&
+         cells[a] === cells[b] && cells[b] === cells[c]
         ) {
-           return ceils[a];
+           return cells[a];
          }
       }
       return null;
    }
 
   render() {
-    const winner = this.state.winner;
-    const currentTurn = this.state.currentTurn;
+    const {winner, currentTurn} = this.state;
     return (
       <div 
-        className="Game_field" 
+        className="Game-field" 
         onClick={(event) => {
-          this._getIndexCeil(event)
+          this._getIndexCell(event)
          }
         }
       >
@@ -93,41 +88,42 @@ class Game extends Component {
         </h3>
 
         <div 
-          className="Ceil_container"
+          className="Ceil-container"
            
         >
-          <Ceil index="0" value={this._getCellText(this.state.ceils[0])} />
-          <Ceil index="1" value={this._getCellText(this.state.ceils[1])} />
-          <Ceil index="2" value={this._getCellText(this.state.ceils[2])} />
+          <Cell index="0" value={this._getCellText(this.state.cells[0])} />
+          <Cell index="1" value={this._getCellText(this.state.cells[1])} />
+          <Cell index="2" value={this._getCellText(this.state.cells[2])} />
         </div>
 
         <div 
-          className="Ceil_container" 
+          className="Ceil-container" 
         >
-          <Ceil index="3" value={this._getCellText(this.state.ceils[3])} />
-          <Ceil index="4" value={this._getCellText(this.state.ceils[4])} />
-          <Ceil index="5" value={this._getCellText(this.state.ceils[5])} />
+          <Cell index="3" value={this._getCellText(this.state.cells[3])} />
+          <Cell index="4" value={this._getCellText(this.state.cells[4])} />
+          <Cell index="5" value={this._getCellText(this.state.cells[5])} />
         </div>
 
         <div 
-          className="Ceil_container" 
+          className="Ceil-container" 
         >
-          <Ceil index="6" value={this._getCellText(this.state.ceils[6])} />
-          <Ceil index="7" value={this._getCellText(this.state.ceils[7])} />
-          <Ceil index="8" value={this._getCellText(this.state.ceils[8])} />
+          <Cell index="6" value={this._getCellText(this.state.cells[6])} />
+          <Cell index="7" value={this._getCellText(this.state.cells[7])} />
+          <Cell index="8" value={this._getCellText(this.state.cells[8])} />
         </div>
-
-        <button 
-          className="Game_btn__rest"
-          onClick={() => this.setState({
-            ceils: Array(9).fill(null),
-            winner: null,
-            currentTurn: 1
-            })
-          }
-        >
-          Restart
-        </button>
+        <div className="btn-container"> 
+          <button 
+            className="Game-btn--restart"
+            onClick={() => this.setState({
+              cells: Array(9).fill(null),
+              winner: null,
+              currentTurn: 1
+              })
+            }
+          >
+            Restart
+          </button>
+        </div> 
       </div>
     )
    

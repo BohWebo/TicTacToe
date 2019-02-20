@@ -7,13 +7,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.Game_field{
-
+.Game-field{
   margin-left: 40%;
   margin-top: 100px;
-
 }
-.Ceil_container {
+
+.Ceil-container {
   display: flex;
 }
 
@@ -31,7 +30,7 @@ body {
   cursor: pointer;
 }
 
-.Game_btn__rest {
+.Game-btn--restart {
   margin-top: 20px;
   background-color: darkgoldenrod;
   border: none;
@@ -39,23 +38,26 @@ body {
   width: 100px;
   height: 60px;
   font-size: 20px;
-
-  margin-left: 10%; 
+  
+  margin-left: 4%;
+  
 }
 
-.Game_btn__rest:hover{
+
+.Game-btn--restart:hover{
   
   cursor: pointer;
 }
-.Game_btn__rest:active{ 
+.Game-btn--restart:active{ 
   transform: translateY(1px);
   filter: saturate(150%);
   outline: none;
 
 }
-.Game_btn__rest:focus{
+.Game-btn--restart:focus{
   outline: none;
 }
+
 
 [data-index="0"]{
   border-left:none; 
@@ -65,7 +67,6 @@ body {
 [data-index="1"]{
   border-top: none;
 }
-
 
 [data-index="2"]{
   border-top: none;
