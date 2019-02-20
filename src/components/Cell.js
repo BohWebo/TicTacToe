@@ -5,7 +5,7 @@ const Cell = (props) => {
 const {index, value} = props;
 return (
       <span 
-        className="Ceil" 
+        className="Cell" 
         data-index={index}
       >
         {value}

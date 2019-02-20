@@ -32,7 +32,8 @@ class Game extends Component {
   }
 
   _markCell(index) {
-    let {winner, currentTurn, cells: [...cells]} = this.state;
+    let {winner, currentTurn, } = this.state;
+    const {cells} = this.state;
     
     if(cells[index] !== null ) return;
     if(winner !== null) return;
@@ -57,7 +58,8 @@ class Game extends Component {
 
   _checkWinner(cells){
     for (let combination of winnerCombinations ) {
-      const [a, b, c] = [...combination];
+      let [a, b, c] = [...combination];
+      console.log(combination);
 
       if(
         cells[a] !== null &&
@@ -65,9 +67,9 @@ class Game extends Component {
         cells[b] === cells[c]
       ) {
           return cells[a];
+        }
     }
     return null;
-    }
    }
 
   render() {
@@ -88,7 +90,7 @@ class Game extends Component {
         </h3>
 
         <div 
-          className="Ceil-container"
+          className="Cell-container"
            
         >
           <Cell index="0" value={this._getCellText(cells[0])} />
@@ -97,7 +99,7 @@ class Game extends Component {
         </div>
 
         <div 
-          className="Ceil-container" 
+          className="Cell-container" 
         >
           <Cell index="3" value={this._getCellText(cells[3])} />
           <Cell index="4" value={this._getCellText(cells[4])} />
@@ -105,7 +107,7 @@ class Game extends Component {
         </div>
 
         <div 
-          className="Ceil-container" 
+          className="Cell-container" 
         >
           <Cell index="6" value={this._getCellText(cells[6])} />
           <Cell index="7" value={this._getCellText(cells[7])} />
